@@ -17,6 +17,9 @@ namespace XTown.UI {
         private Action clicked = null;
         public ButtonStyle style = null;//todo editorscript -> CustomEditor(typeof(XButton))
 
+        //New(string text..., Action clicked)
+        //Size()
+
         public XButton Color(Color color) {
             background.Color(color);
             return this;
