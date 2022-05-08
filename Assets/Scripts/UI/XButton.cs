@@ -20,6 +20,20 @@ namespace XTown.UI {
         //New(string text..., Action clicked)
         //Size()
 
+        public static XButton New() {
+            GameObject go = new GameObject();
+            XButton e = go.AddComponent<XButton>();
+            e.rect = go.GetComponent<RectTransform>();
+            e.style = Styles.Default<ButtonStyle>();
+            return e;
+        }
+
+        public static XButton New(Action clicked) {
+            XButton b = New();
+            b.clicked = clicked;
+            return b;
+        }
+
         public XButton Color(Color color) {
             background.Color(color);
             return this;
@@ -42,11 +56,20 @@ namespace XTown.UI {
             return this;
         }
 
-        ButtonStyle IStyle<ButtonStyle>.GetStyle() {
+        public XButton Clicked(Action c) {
+            clicked = c;
+            return this;
+        }
+
+        void _OnClicked() {
+            if (clicked != null) clicked();
+        }
+
+        public ButtonStyle GetStyle() {
             return style;
         }
 
-        void IStyle<ButtonStyle>.SetStyle(ButtonStyle style) {
+        public void SetStyle(ButtonStyle style) {
             this.style = style;
 
             style.Apply(this);
@@ -59,6 +82,7 @@ namespace XTown.UI {
             base.Awake();
             rect = GetComponent<RectTransform>();
             background = GetComponent<XImage>();
+            onClick.AddListener(_OnClicked);
         }
 
         protected virtual void LateUpdate() {
