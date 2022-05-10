@@ -8,6 +8,7 @@ namespace XTown.UI {
     [AddComponentMenu("XUI/XRawImage")]
     public class XRawImage : RawImage, IElement<XRawImage> {
         public RectTransform rect;
+        public XLayoutElement cell;
         private Action updater = null;
 
         public static XRawImage New() {
@@ -42,6 +43,14 @@ namespace XTown.UI {
             return rect;
         }
 
+        public XLayoutElement GetCell() {
+            return cell;
+        }
+
+        public XLayoutElement AddCell() {
+            if (cell == null) cell = gameObject.AddComponent<XLayoutElement>();
+            return cell;
+        }
 
         public void SetScene(Canvas scene) {
             rect.SetParent(scene.transform, false);

@@ -9,6 +9,7 @@ namespace XTown.UI {
     [AddComponentMenu("XUI/XButton")] [RequireComponent(typeof(XImage))]
     public class XButton : Button, IElement<XButton>, IGroup, IStyle<ButtonStyle>{
         public RectTransform rect;
+        public XLayoutElement cell = null;
         public XImage background;
 
         public bool pressed, hovering;
@@ -45,6 +46,15 @@ namespace XTown.UI {
 
         public RectTransform GetRect() {
             return rect;
+        }
+
+        public XLayoutElement GetCell() {
+            return cell;
+        }
+
+        public XLayoutElement AddCell() {
+            if(cell == null) cell = gameObject.AddComponent<XLayoutElement>();
+            return cell;
         }
 
         public void SetScene(Canvas scene) {

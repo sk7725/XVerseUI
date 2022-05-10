@@ -7,6 +7,10 @@ namespace XTown.UI {
     public interface IElement<T> where T : Component {
         RectTransform GetRect();
 
+        XLayoutElement GetCell();
+
+        XLayoutElement AddCell();
+
         Color GetColor();
         T Color(Color color);
 

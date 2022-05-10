@@ -8,6 +8,7 @@ namespace XTown.UI {
     [AddComponentMenu("XUI/Label")]
     public class Label : Text, IElement<Label> {
         public RectTransform rect;
+        public XLayoutElement cell;
         private Action updater = null;
 
         //todo override Align to also align text
@@ -44,6 +45,14 @@ namespace XTown.UI {
             return rect;
         }
 
+        public XLayoutElement GetCell() {
+            return cell;
+        }
+
+        public XLayoutElement AddCell() {
+            if (cell == null) cell = gameObject.AddComponent<XLayoutElement>();
+            return cell;
+        }
 
         public void SetScene(Canvas scene) {
             rect.SetParent(scene.transform, false);
