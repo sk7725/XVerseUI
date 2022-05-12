@@ -1,32 +1,37 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace XTown.UI {
     [AddComponentMenu("XUI/Label")]
-    public class Label : Text, IElement<Label> {
+    public class Label : TextMeshProUGUI, IElement<Label> {
         public RectTransform rect;
         public XLayoutElement cell;
         private Action updater = null;
 
-        //todo override Align to also align text
-        public static Label New() {
-            GameObject go = new GameObject();
+        //todo override Align to also align text - wrapper implementation
+        private static Label NewNamed(string name) {
+            GameObject go = new GameObject(name);
             Label e = go.AddComponent<Label>();
             e.rect = go.GetComponent<RectTransform>();
             return e;
         }
 
+        public static Label New() {
+            return NewNamed("label");
+        }
+
         public static Label New(string text) {
-            Label l = New();
+            Label l = NewNamed(text);
             l.text = text;
             return l;
         }
 
         public static Label New(Func<string> textp) {
-            Label l = New();
+            Label l = NewNamed(textp());
             l.text = "";
             l.Updates(() => l.text = textp());
             return l;
@@ -34,6 +39,10 @@ namespace XTown.UI {
 
         public Label Color(Color color) {
             this.color = color;
+            return this;
+        }
+
+        public IElement<Label> Get() {
             return this;
         }
 
@@ -52,10 +61,6 @@ namespace XTown.UI {
         public XLayoutElement AddCell() {
             if (cell == null) cell = gameObject.AddComponent<XLayoutElement>();
             return cell;
-        }
-
-        public void SetScene(Canvas scene) {
-            rect.SetParent(scene.transform, false);
         }
 
         public Label Updates(Action u) {

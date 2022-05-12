@@ -11,27 +11,36 @@ namespace XTown.UI {
         public XLayoutElement cell;
         private Action updater = null;
 
-        public static XImage New() {
-            GameObject go = new GameObject();
+        private static XImage NewNamed(string name) {
+            GameObject go = new GameObject(name);
             XImage e = go.AddComponent<XImage>();
             e.rect = go.GetComponent<RectTransform>();
             return e;
         }
 
+        public static XImage New() {
+            return NewNamed("xImage");
+        }
+
         public static XImage New(string sprite) {
-            XImage im = New();
+            XImage im = NewNamed(sprite);
+
             im.sprite = Resources.Load<Sprite>("Sprites/" + sprite);
             return im;
         }
 
         public static XImage New(Sprite sprite) {
-            XImage im = New();
+            XImage im = NewNamed(sprite.name);
             im.sprite = sprite;
             return im;
         }
 
         public XImage Color(Color color) {
             this.color = color;
+            return this;
+        }
+
+        public IElement<XImage> Get() {
             return this;
         }
 
@@ -50,10 +59,6 @@ namespace XTown.UI {
         public XLayoutElement AddCell() {
             if (cell == null) cell = gameObject.AddComponent<XLayoutElement>();
             return cell;
-        }
-
-        public void SetScene(Canvas scene) {
-            rect.SetParent(scene.transform, false);
         }
 
         public XImage Updates(Action u) {

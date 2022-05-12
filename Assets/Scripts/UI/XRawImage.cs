@@ -11,27 +11,35 @@ namespace XTown.UI {
         public XLayoutElement cell;
         private Action updater = null;
 
-        public static XRawImage New() {
-            GameObject go = new GameObject();
+        private static XRawImage NewNamed(string name) {
+            GameObject go = new GameObject(name);
             XRawImage e = go.AddComponent<XRawImage>();
             e.rect = go.GetComponent<RectTransform>();
             return e;
         }
 
+        public static XRawImage New() {
+            return NewNamed("xRawImage");
+        }
+
         public static XRawImage New(string sprite) {
-            XRawImage im = New();
+            XRawImage im = NewNamed(sprite);
             im.texture = Resources.Load<Texture2D>("Sprites/" + sprite);
             return im;
         }
 
         public static XRawImage New(Texture2D sprite) {
-            XRawImage im = New();
+            XRawImage im = NewNamed(sprite.name);
             im.texture = sprite;
             return im;
         }
 
         public XRawImage Color(Color color) {
             this.color = color;
+            return this;
+        }
+
+        public IElement<XRawImage> Get() {
             return this;
         }
 
@@ -50,10 +58,6 @@ namespace XTown.UI {
         public XLayoutElement AddCell() {
             if (cell == null) cell = gameObject.AddComponent<XLayoutElement>();
             return cell;
-        }
-
-        public void SetScene(Canvas scene) {
-            rect.SetParent(scene.transform, false);
         }
 
         public XRawImage Updates(Action u) {

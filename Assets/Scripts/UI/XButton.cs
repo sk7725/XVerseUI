@@ -22,10 +22,11 @@ namespace XTown.UI {
         //Size()
 
         public static XButton New() {
-            GameObject go = new GameObject();
+            GameObject go = new GameObject("xButton");
             XButton e = go.AddComponent<XButton>();
             e.rect = go.GetComponent<RectTransform>();
             e.style = Styles.Default<ButtonStyle>();
+            e.style.Apply(e);
             return e;
         }
 
@@ -35,8 +36,20 @@ namespace XTown.UI {
             return b;
         }
 
+        public static XButton New(string text, Action clicked) {
+            XButton b = New(clicked);
+            Label label = Label.New(text);
+            label.rect.SetParent(b.rect, false);
+            label.Get().Center().Fill();
+            return b;
+        }
+
         public XButton Color(Color color) {
             background.Color(color);
+            return this;
+        }
+
+        public IElement<XButton> Get() {
             return this;
         }
 
@@ -55,10 +68,6 @@ namespace XTown.UI {
         public XLayoutElement AddCell() {
             if(cell == null) cell = gameObject.AddComponent<XLayoutElement>();
             return cell;
-        }
-
-        public void SetScene(Canvas scene) {
-            rect.SetParent(scene.transform, false);
         }
 
         public XButton Updates(Action u) {

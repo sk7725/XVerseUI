@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a54ca14ee815ce44fae7955ec1db7c6b, type: 3}
-  m_Name: NewButtonStyle 1
+  m_Name: Blankb
   m_EditorClassIdentifier: 
-  defaultSprite: {fileID: 0}
+  defaultSprite: {fileID: 21300000, guid: 7245f5d0d816e4541b00eac164965134, type: 3}
   sprites:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 21300000, guid: 5e63452144c537d48a176e6071d13bb9, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
+  imageType: 0

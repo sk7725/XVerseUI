@@ -9,9 +9,11 @@ namespace XTown.UI {
     public class ButtonStyle : ScriptableObject {
         public Sprite defaultSprite;
         public SpriteState sprites;
+        public Image.Type imageType = Image.Type.Sliced;
 
         public void Apply(XButton b) {
             b.background.sprite = defaultSprite;
+            b.background.type = imageType;
             b.transition = Transition.SpriteSwap;
             b.spriteState = sprites;
         }
