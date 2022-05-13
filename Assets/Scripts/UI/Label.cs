@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace XTown.UI {
     [AddComponentMenu("XUI/Label")]
-    public class Label : TextMeshProUGUI, IElement<Label> {
+    public class Label : TextMeshProUGUI, ILabel {
         public RectTransform rect;
         public XLayoutElement cell;
         private Action updater = null;
@@ -35,6 +35,10 @@ namespace XTown.UI {
             l.text = "";
             l.Updates(() => l.text = textp());
             return l;
+        }
+
+        public Label GetLabel() {
+            return this;
         }
 
         public Label Color(Color color) {

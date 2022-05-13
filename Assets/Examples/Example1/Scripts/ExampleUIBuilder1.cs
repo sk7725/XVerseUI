@@ -15,5 +15,9 @@ public class ExampleUIBuilder1 : MonoBehaviour {
 
         var three = XButton.New("Three", () => Debug.Log("3"));
         three.Get().Right().FillY().SetScene(main);
+
+        Label.New("XTOWN").Get().Left().Down().SetScene(main);
+
+        Label.New("UI").Get().Down().Right().SetScene(main);
     }
 }
