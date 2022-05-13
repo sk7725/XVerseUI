@@ -85,5 +85,23 @@ namespace XTown.UI {
         public IElement<T> Fill() {
             return FillX().FillY();
         }
+
+        public IElement<T> Width(float amount) {
+            GetRect().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, amount);
+            return this;
+        }
+
+        public IElement<T> Height(float amount) {
+            GetRect().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, amount);
+            return this;
+        }
+
+        public IElement<T> Size(float size) {
+            return Size(size, size);
+        }
+
+        public IElement<T> Size(float width, float height) {
+            return Width(width).Height(height);
+        }
     }
 }
