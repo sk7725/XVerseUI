@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace XTown.UI {
-    [AddComponentMenu("XUI/XButton")] [RequireComponent(typeof(XImage))]
-    public class XButton : Button, IElement<XButton>, IGroup, IStyle<ButtonStyle>{
+    [AddComponentMenu("XUI/XButton")] [RequireComponent(typeof(XImage))] //todo RequireComponent(typeof(Table))]
+    public class XButton : Button, IElement<XButton>, IStyle<ButtonStyle>{
         public RectTransform rect;
         public XLayoutElement cell = null;
         public XImage background;
@@ -41,6 +41,14 @@ namespace XTown.UI {
             Label label = Label.New(text);
             label.rect.SetParent(b.rect, false);
             label.Get().Center().Fill();
+            return b;
+        }
+
+        public static XButton New(Texture2D icon, float iconSize, Action clicked) {
+            XButton b = New(clicked);
+            XRawImage image = XRawImage.New(icon);
+            image.rect.SetParent(b.rect, false);
+            image.Get().Center().Size(iconSize);
             return b;
         }
 
