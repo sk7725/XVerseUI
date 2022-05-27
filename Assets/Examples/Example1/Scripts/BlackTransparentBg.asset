@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aaddaaa0a26e7fe4a8043b2f6588a1fd, type: 3}
-  m_Name: WhiteBg
+  m_Name: BlackTransparentBg
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  color: {r: 1, g: 1, b: 1, a: 1}
+  color: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 0.6392157}
   material: {fileID: 0}
   imageType: 0

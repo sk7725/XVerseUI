@@ -27,11 +27,11 @@ public static class EUtils {
         T defo = AssetDatabase.LoadAssetAtPath<T>(path);
         if (defo == null) {
             defo = ScriptableObject.CreateInstance<T>();
-            defo.name = "Default" + typeof(T).Name;
             AssetDatabase.CreateAsset(defo, path);
         }
 
         EditorUtility.CopySerialized(obj, defo);
+        defo.name = "Default" + typeof(T).Name;
         EditorUtility.SetDirty(defo);
         Debug.Log("Set default of " + typeof(T).Name + " to " + obj.name);
     }
