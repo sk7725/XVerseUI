@@ -12,14 +12,17 @@ namespace XTown.UI {
         public static LayoutHelper<T> NewLayout<T>(bool fitSize) where T : Component {
             T go = new GameObject("LayoutGroup").AddComponent<T>();
             if(fitSize) go.gameObject.AddComponent<ContentSizeFitter>();
-            var t = new LayoutHelper<T>(go);
-            t.Add(Background.New());
+            Background e = go.gameObject.AddComponent<Background>();
+            e.style = Styles.Default<BackgroundStyle>();
+            e.style.Apply(e);
+
+            var t = new LayoutHelper<T>(go, e);
             return t;
         }
 
         public static LayoutHelper<T> NewLayout<T>(float width, float height) where T : Component {
             var t = NewLayout<T>(false);
-            //todo set size
+            t.Get().Size(width, height);
             return t;
         }
 
@@ -37,13 +40,19 @@ namespace XTown.UI {
 
         public class LayoutHelper<T> where T : Component {
             public T component;
+            public Background element;
 
-            public LayoutHelper(T component) {
+            public LayoutHelper(T component, Background element) {
                 this.component = component;
+                this.element = element;
             }
 
             public void Add(Component o) {
                 Add(o.gameObject);
+            }
+
+            public void Add(Component o, int index) {
+                Add(o.gameObject, index);
             }
 
             public void Add(GameObject o) {
@@ -57,6 +66,10 @@ namespace XTown.UI {
 
             public void ClearChildren() {
                 LayoutUtils.ClearChildren(component.gameObject);
+            }
+
+            public IElement<XImage> Get() {
+                return element;
             }
         }
     }
