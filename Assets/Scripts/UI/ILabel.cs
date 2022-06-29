@@ -6,7 +6,7 @@ using UnityEngine;
  * Exists because classes cannot override default methods of interfaces (Very Good Language Design)
  */
 
-namespace XTown.UI {
+namespace XVerse.UI {
     public interface ILabel : IElement<Label> {
         Label GetLabel();
         IElement<Label> IElement<Label>.Center() {

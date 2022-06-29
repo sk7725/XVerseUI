@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using XTown.UI;
+using XVerse.UI;
 
 public class ExampleUIBuilder1 : MonoBehaviour {
     void Start() {

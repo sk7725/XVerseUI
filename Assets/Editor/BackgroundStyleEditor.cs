@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace XTown.UI {
+namespace XVerse.UI {
     [CustomEditor(typeof(BackgroundStyle))]
     public class BackgroundStyleEditor : Editor {
         SerializedProperty defs, color, mat, imageType;

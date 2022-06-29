@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaults:
     key:
-    - _classRef: XTown.UI.BackgroundStyle, Assembly-CSharp
-    - _classRef: XTown.UI.ButtonStyle, Assembly-CSharp
+    - _classRef: XVerse.UI.ButtonStyle, Assembly-CSharp
+    - _classRef: XVerse.UI.BackgroundStyle, Assembly-CSharp
     value:
+    - {fileID: 11400000, guid: bd37aad8fba226049b29fc8f50e29e8a, type: 2}
     - {fileID: 11400000, guid: decc873995bd05f4a885f315cd088f3e, type: 2}
-    - {fileID: 11400000, guid: 73b26444a7f8ede4984c5cae32713630, type: 2}

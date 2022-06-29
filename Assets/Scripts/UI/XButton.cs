@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace XTown.UI {
+namespace XVerse.UI {
     [AddComponentMenu("XUI/XButton")] [RequireComponent(typeof(XImage))] //todo RequireComponent(typeof(Table))]
     public class XButton : Button, IElement<XButton>, IStyle<ButtonStyle>{
         public RectTransform rect;

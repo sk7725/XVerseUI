@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace XTown.UI {
+namespace XVerse.UI {
     /** <summary>Utility for instantiating groups. 
      * Horizontal/Vertical Layout Group support is temporary and may be removed in the future.</summary>
      */

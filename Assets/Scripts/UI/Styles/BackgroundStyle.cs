@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace XTown.UI {
+namespace XVerse.UI {
     [CreateAssetMenu(fileName = "NewBgStyle", menuName = "XUI/Styles/BackgroundStyle", order = 100)]
     public class BackgroundStyle : ScriptableObject {
         public Sprite sprite;

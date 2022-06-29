@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace XTown.UI {
+namespace XVerse.UI {
     [AddComponentMenu("XUI/XRawImage")]
     public class XRawImage : RawImage, IElement<XRawImage> {
         public RectTransform rect;

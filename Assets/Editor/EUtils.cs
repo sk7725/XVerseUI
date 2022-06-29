@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using XVerse.UI;
 
 public static class EUtils {
     private const string RES_DIR = "Assets/Resources";

@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace XTown.UI {
+namespace XVerse.UI {
     [AddComponentMenu("XUI/Label")]
     public class Label : TextMeshProUGUI, ILabel {
         public RectTransform rect;

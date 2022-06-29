@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace XTown.UI {
+namespace XVerse.UI {
     [AddComponentMenu("XUI/Background")]
     public class Background : XImage, IStyle<BackgroundStyle> {
         public BackgroundStyle style;

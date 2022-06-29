@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.UI.Selectable;
 
-namespace XTown.UI {
+namespace XVerse.UI {
     [CreateAssetMenu(fileName = "NewButtonStyle", menuName = "XUI/Styles/ButtonStyle", order = 99)]
     public class ButtonStyle : ScriptableObject {
         public Sprite defaultSprite;

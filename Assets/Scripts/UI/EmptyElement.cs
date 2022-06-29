@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace XTown.UI {
+namespace XVerse.UI {
     public class EmptyElement : MonoBehaviour, IElement<EmptyElement> {
         public RectTransform rect;
         public XLayoutElement cell;

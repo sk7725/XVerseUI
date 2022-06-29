@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-namespace XTown.UI {
+namespace XVerse.UI {
 	[AddComponentMenu("XUI/Table Layout Group", 20)]
 	public class Table : LayoutGroup {
 		public enum Corner { UpperLeft = 0, UpperRight = 1, LowerLeft = 2, LowerRight = 3 }

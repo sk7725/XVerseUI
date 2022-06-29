@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace XTown.UI {
+namespace XVerse.UI {
     [CustomEditor(typeof(XButton))]
     public class XButtonEditor : Editor {
         SerializedProperty style, interactable, pressed, hovering, nav, bg;

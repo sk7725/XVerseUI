@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace XTown.UI {
+namespace XVerse.UI {
     public interface IElement<T> where T : Component {
         IElement<T> Get();
 
