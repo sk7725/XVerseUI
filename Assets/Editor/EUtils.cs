@@ -13,25 +13,25 @@ public static class EUtils {
     }
 
     public static void SetDefault<T>(T obj) where T : ScriptableObject {
-        Debug.Log("TODO");
+        Debug.Log("TODO turn into an addressable");
 
-        if (!AssetDatabase.IsValidFolder(RES_DIR)) {
+        if (!AssetDatabase.IsValidFolder("Assets/Resources")) {
             AssetDatabase.CreateFolder("Assets", "Resources");
         }
-        if (!AssetDatabase.IsValidFolder(DEFAULTS_DIR)) {
-            AssetDatabase.CreateFolder("Assets/Resources", "DefaultValues");
+        if (!AssetDatabase.IsValidFolder(RES_DIR + "/" + Styles.FOLDER)) {
+            AssetDatabase.CreateFolder(RES_DIR, Styles.FOLDER);
         }
 
-        string path = DEFAULTS_DIR + "/Default" + typeof(T).Name + ".asset";
+        string path = RES_DIR + "/" + Styles.DIR + ".asset";
 
-        T defo = AssetDatabase.LoadAssetAtPath<T>(path);
+        Styles defo = AssetDatabase.LoadAssetAtPath<Styles>(path); //should be an addressable fetcher
         if (defo == null) {
-            defo = ScriptableObject.CreateInstance<T>();
+            defo = ScriptableObject.CreateInstance<Styles>();
             AssetDatabase.CreateAsset(defo, path);
+            //should add defo to addressable here
         }
 
-        EditorUtility.CopySerialized(obj, defo);
-        defo.name = "Default" + typeof(T).Name;
+        defo.defaults.Set<T>(obj);
         EditorUtility.SetDirty(defo);
         Debug.Log("Set default of " + typeof(T).Name + " to " + obj.name);
     }
