@@ -6,7 +6,6 @@ using XVerse.UI;
 
 public static class EUtils {
     private const string RES_DIR = "Assets/Resources";
-    private const string DEFAULTS_DIR = "Assets/Resources/DefaultValues";
     private static char[] folderSplit = { '/', '\\' };
 
     public static T FromPath<T>(string path) where T : ScriptableObject {
