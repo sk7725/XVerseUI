@@ -28,7 +28,6 @@ namespace XVerse.UI {
 		protected override void OnValidate() {
 			base.OnValidate();
 		}
-
 #endif
 
 		public override void CalculateLayoutInputHorizontal() {

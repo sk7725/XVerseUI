@@ -22,12 +22,20 @@ public class ExampleUIBuilder1 : MonoBehaviour {
         Label.New("UI").Get().Down().Right().SetScene(main);
 
         string[] names = new string[] { "Taegyu", "Hanjun", "SeongH" };
-        var ver = LayoutUtils.NewLayout<VerticalLayoutGroup>(200f, 600f);
-        for (int i = 0; i < names.Length; i++) {
-            Label l = Label.New(names[i]);
-            l.Get().Center().FillX();
-            ver.Add(l);
-        }
+        string[] roles = new string[] { "Leader", "Dev", "Dev" };
+        var ver = Layouts.Vertical(true);
+        ver.Horizontal(t => {
+            for (int i = 0; i < names.Length; i++) {
+                t.Add(names[i]).Get().Center().Width(140);
+            }
+        }).Height(60f);
+        ver.RawImage().Color(Color.cyan).Get().Height(8).FillX();
+        ver.Horizontal(t => {
+            for (int i = 0; i < names.Length; i++) {
+                t.Add(roles[i]).Get().Center().Width(140);
+            }
+        }).Height(60f);
+
         ver.Get().Left().SetScene(main);
     }
 }

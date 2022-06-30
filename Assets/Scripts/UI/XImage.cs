@@ -8,7 +8,7 @@ namespace XVerse.UI {
     [AddComponentMenu("XUI/XImage")]
     public class XImage : Image, IElement<XImage> {
         public RectTransform rect;
-        public XLayoutElement cell;
+        public LayoutElement cell;
         private Action updater = null;
 
         private static XImage NewNamed(string name) {
@@ -52,12 +52,12 @@ namespace XVerse.UI {
             return rect;
         }
 
-        public XLayoutElement GetCell() {
+        public LayoutElement GetCell() {
             return cell;
         }
 
-        public XLayoutElement AddCell() {
-            if (cell == null) cell = gameObject.AddComponent<XLayoutElement>();
+        public LayoutElement AddCell() {
+            if (cell == null) cell = gameObject.AddComponent<LayoutElement>();
             return cell;
         }
 

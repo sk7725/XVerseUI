@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace XVerse.UI {
     public class EmptyElement : MonoBehaviour, IElement<EmptyElement> {
         public RectTransform rect;
-        public XLayoutElement cell;
+        public LayoutElement cell;
         private Action updater = null;
 
         public static EmptyElement New(string name) {
@@ -41,12 +42,12 @@ namespace XVerse.UI {
             return this;
         }
 
-        public XLayoutElement GetCell() {
+        public LayoutElement GetCell() {
             return cell;
         }
 
-        public XLayoutElement AddCell() {
-            if (cell == null) cell = gameObject.AddComponent<XLayoutElement>();
+        public LayoutElement AddCell() {
+            if (cell == null) cell = gameObject.AddComponent<LayoutElement>();
             return cell;
         }
 

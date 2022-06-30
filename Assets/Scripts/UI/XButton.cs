@@ -9,7 +9,7 @@ namespace XVerse.UI {
     [AddComponentMenu("XUI/XButton")] [RequireComponent(typeof(XImage))] //todo RequireComponent(typeof(Table))]
     public class XButton : Button, IElement<XButton>, IStyle<ButtonStyle>{
         public RectTransform rect;
-        public XLayoutElement cell = null;
+        public LayoutElement cell = null;
         public XImage background;
 
         public bool pressed, hovering;
@@ -69,12 +69,12 @@ namespace XVerse.UI {
             return rect;
         }
 
-        public XLayoutElement GetCell() {
+        public LayoutElement GetCell() {
             return cell;
         }
 
-        public XLayoutElement AddCell() {
-            if(cell == null) cell = gameObject.AddComponent<XLayoutElement>();
+        public LayoutElement AddCell() {
+            if(cell == null) cell = gameObject.AddComponent<LayoutElement>();
             return cell;
         }
 

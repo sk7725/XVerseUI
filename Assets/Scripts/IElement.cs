@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace XVerse.UI {
     public interface IElement<T> where T : Component {
@@ -9,9 +10,9 @@ namespace XVerse.UI {
 
         RectTransform GetRect();
 
-        XLayoutElement GetCell();
+        LayoutElement GetCell();
 
-        XLayoutElement AddCell();
+        LayoutElement AddCell();
 
         Color GetColor();
         T Color(Color color);
@@ -88,11 +89,15 @@ namespace XVerse.UI {
 
         public IElement<T> Width(float amount) {
             GetRect().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, amount);
+            LayoutElement cell = AddCell();
+            cell.minWidth = cell.preferredWidth = amount;
             return this;
         }
 
         public IElement<T> Height(float amount) {
             GetRect().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, amount);
+            LayoutElement cell = AddCell();
+            cell.minHeight = cell.preferredHeight = amount;
             return this;
         }
 

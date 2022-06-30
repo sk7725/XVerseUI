@@ -8,7 +8,7 @@ namespace XVerse.UI {
     [AddComponentMenu("XUI/XRawImage")]
     public class XRawImage : RawImage, IElement<XRawImage> {
         public RectTransform rect;
-        public XLayoutElement cell;
+        public LayoutElement cell;
         private Action updater = null;
 
         private static XRawImage NewNamed(string name) {
@@ -51,12 +51,12 @@ namespace XVerse.UI {
             return rect;
         }
 
-        public XLayoutElement GetCell() {
+        public LayoutElement GetCell() {
             return cell;
         }
 
-        public XLayoutElement AddCell() {
-            if (cell == null) cell = gameObject.AddComponent<XLayoutElement>();
+        public LayoutElement AddCell() {
+            if (cell == null) cell = gameObject.AddComponent<LayoutElement>();
             return cell;
         }
 
