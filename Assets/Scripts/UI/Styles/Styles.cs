@@ -10,7 +10,7 @@ namespace XVerse.UI {
         public StylesMap defaults = new StylesMap();
 
         public static T Default<T>() where T : ScriptableObject {
-            if (main == null) main = Resources.Load<Styles>(DIR); //todo should be an addressable fetcher
+            if (main == null) main = Resources.Load<Styles>(DIR);
             if (main == null) {
                 Debug.LogError("No Styles ScriptableObject preset found, Please assign at least one default style");
                 return null;

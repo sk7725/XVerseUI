@@ -24,11 +24,10 @@ public static class EUtils {
 
         string path = RES_DIR + "/" + Styles.DIR + ".asset";
 
-        Styles defo = AssetDatabase.LoadAssetAtPath<Styles>(path); //should be an addressable fetcher
+        Styles defo = AssetDatabase.LoadAssetAtPath<Styles>(path);
         if (defo == null) {
             defo = ScriptableObject.CreateInstance<Styles>();
             AssetDatabase.CreateAsset(defo, path);
-            //should add defo to addressable here
         }
 
         defo.defaults.Set<T>(obj);
