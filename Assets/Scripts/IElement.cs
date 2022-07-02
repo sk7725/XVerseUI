@@ -108,5 +108,27 @@ namespace XVerse.UI {
         public IElement<T> Size(float width, float height) {
             return Width(width).Height(height);
         }
+
+        public IElement<T> GrowX(float amount) {
+            AddCell().flexibleWidth = amount;
+            return this;
+        }
+
+        public IElement<T> GrowX() {
+            return GrowX(1);
+        }
+
+        public IElement<T> GrowY(float amount) {
+            AddCell().flexibleHeight = amount;
+            return this;
+        }
+
+        public IElement<T> GrowY() {
+            return GrowY(1);
+        }
+
+        public IElement<T> Grow() {
+            return GrowX(1).GrowY(1);
+        }
     }
 }

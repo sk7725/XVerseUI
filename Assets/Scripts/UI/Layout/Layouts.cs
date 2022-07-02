@@ -61,9 +61,9 @@ namespace XVerse.UI {
 
         public class LayoutHelper<T> where T : LayoutGroup {
             public T component;
-            public Background element;
+            public XImage element;
 
-            public LayoutHelper(T component, Background element) {
+            public LayoutHelper(T component, XImage element) {
                 this.component = component;
                 this.element = element;
             }
@@ -123,6 +123,49 @@ namespace XVerse.UI {
                 Add(image);
                 return image;
             }
+
+            public XButton Button<F>(Action<LayoutHelper<F>> cons, ButtonStyle style, Action clicked) where F: LayoutGroup {
+                XButton b = XButton.NewStyled(style);
+                cons(b.AsLayout<F>());
+                Add(b);
+                return b;
+            }
+
+            public XButton Button<F>(Action<LayoutHelper<F>> cons, Action clicked) where F : LayoutGroup {
+                return Button(cons, null, clicked);
+            }
+
+            public XButton Button(string text, Action clicked) {
+                XButton b = XButton.New(text, clicked);
+                Add(b);
+                return b;
+            }
+
+            //todo Button(text, textStyle, clicked)
+
+            public XButton Button(Texture2D image, float imageSize, Action clicked) {
+                XButton b = XButton.New(image, imageSize, clicked);
+                Add(b);
+                return b;
+            }
+
+            public XButton Button(Texture2D image, Action clicked) {
+                return Button(image, image.width, clicked);//todo get image size
+            }
+
+            public XButton Button(string text, Texture2D image, float imageSize, Action clicked) {
+                return Button<VerticalLayoutGroup>(b => {
+                    b.RawImage(image).Get().Size(imageSize);
+                    b.Add(text).Get().Grow();
+                    //todo padding
+                }, clicked);
+            }
+
+            public XButton Button(string text, Texture2D image, Action clicked) {
+                return Button(text, image, image.width, clicked);
+            }
+
+            //todo Button(text, image, textStyle, imageSize, clicked)
 
             public IElement<XImage> SubLayout<F>(Action<LayoutHelper<F>> cons) where F: LayoutGroup {
                 LayoutHelper<F> t = NewLayout<F>(false);

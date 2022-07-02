@@ -34,7 +34,7 @@ public class ExampleUIBuilder1 : MonoBehaviour {
             for (int i = 0; i < names.Length; i++) {
                 t.Add(roles[i]).Get().Center().Width(140);
             }
-        }).Height(60f);
+        }).Height(160f);
 
         ver.Get().Left().SetScene(main);
     }

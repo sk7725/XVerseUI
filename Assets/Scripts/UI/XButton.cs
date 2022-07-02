@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static XVerse.UI.Layouts;
 
 namespace XVerse.UI {
     [AddComponentMenu("XUI/XButton")] [RequireComponent(typeof(XImage))] //todo RequireComponent(typeof(Table))]
@@ -20,14 +21,17 @@ namespace XVerse.UI {
 
         //New(string text..., Action clicked)
         //Size()
-
-        public static XButton New() {
+        public static XButton NewStyled(ButtonStyle style) {
             GameObject go = new GameObject("xButton");
             XButton e = go.AddComponent<XButton>();
             e.rect = go.GetComponent<RectTransform>();
-            e.style = Styles.Default<ButtonStyle>();
+            e.style = style == null ? Styles.Default<ButtonStyle>() : style;
             e.style.Apply(e);
             return e;
+        }
+
+        public static XButton New() {
+            return NewStyled(null);
         }
 
         public static XButton New(Action clicked) {
@@ -100,7 +104,13 @@ namespace XVerse.UI {
             this.style = style;
 
             style.Apply(this);
-            //todo apply style
+        }
+
+        public LayoutHelper<T> AsLayout<T>() where T: LayoutGroup {
+            T c; gameObject.TryGetComponent(out c);
+            if (c == null) c = gameObject.AddComponent<T>();
+
+            return new LayoutHelper<T>(c, background);
         }
 
         //todo
