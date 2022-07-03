@@ -108,7 +108,13 @@ namespace XVerse.UI {
 
         public LayoutHelper<T> AsLayout<T>() where T: LayoutGroup {
             T c; gameObject.TryGetComponent(out c);
-            if (c == null) c = gameObject.AddComponent<T>();
+            if (c == null) {
+                c = gameObject.AddComponent<T>();
+                c.childAlignment = TextAnchor.MiddleCenter;
+            }
+            if(c is HorizontalOrVerticalLayoutGroup hv) {
+                hv.childForceExpandHeight = hv.childForceExpandWidth = false;
+            }
 
             return new LayoutHelper<T>(c, background);
         }

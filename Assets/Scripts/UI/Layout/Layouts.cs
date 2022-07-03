@@ -10,13 +10,14 @@ namespace XVerse.UI {
     public static class Layouts {
         public static LayoutHelper<T> NewLayout<T>(bool fitSize) where T : LayoutGroup {
             T go = new GameObject("LayoutGroup").AddComponent<T>();
+            go.childAlignment = TextAnchor.MiddleCenter;
             if (fitSize) {
                 ContentSizeFitter csf = go.gameObject.AddComponent<ContentSizeFitter>();
                 csf.horizontalFit = csf.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
             }
-            /*if(go is HorizontalOrVerticalLayoutGroup hv) {
-                hv.childControlHeight = hv.childControlWidth = false;
-            }*/
+            if(go is HorizontalOrVerticalLayoutGroup hv) {
+                hv.childForceExpandHeight = hv.childForceExpandWidth = false;
+            }
             Background e = go.gameObject.AddComponent<Background>();
             e.style = Styles.Default<BackgroundStyle>();
             e.style.Apply(e);
@@ -66,6 +67,13 @@ namespace XVerse.UI {
             public LayoutHelper(T component, XImage element) {
                 this.component = component;
                 this.element = element;
+
+                if (element.sprite != null) {
+                    component.padding.left = (int)element.sprite.border.x;
+                    component.padding.right = (int)element.sprite.border.z;
+                    component.padding.top = (int)element.sprite.border.w;
+                    component.padding.bottom = (int)element.sprite.border.y;
+                }
             }
 
             public void Add(Component o) {
@@ -126,6 +134,7 @@ namespace XVerse.UI {
 
             public XButton Button<F>(Action<LayoutHelper<F>> cons, ButtonStyle style, Action clicked) where F: LayoutGroup {
                 XButton b = XButton.NewStyled(style);
+                b.Clicked(clicked);
                 cons(b.AsLayout<F>());
                 Add(b);
                 return b;
@@ -150,13 +159,13 @@ namespace XVerse.UI {
             }
 
             public XButton Button(Texture2D image, Action clicked) {
-                return Button(image, image.width, clicked);//todo get image size
+                return Button(image, image.width, clicked);
             }
 
             public XButton Button(string text, Texture2D image, float imageSize, Action clicked) {
-                return Button<VerticalLayoutGroup>(b => {
-                    b.RawImage(image).Get().Size(imageSize);
-                    b.Add(text).Get().Grow();
+                return Button<HorizontalLayoutGroup>(b => {
+                    b.RawImage(image).Get().Size(imageSize).Center();
+                    b.Add(text).Get().Grow().Center();
                     //todo padding
                 }, clicked);
             }
@@ -180,6 +189,36 @@ namespace XVerse.UI {
 
             public IElement<XImage> Horizontal(Action<LayoutHelper<HorizontalLayoutGroup>> cons) {
                 return SubLayout(cons);
+            }
+
+            //alignment
+            public LayoutHelper<T> Center() {
+                component.childAlignment = TextAnchor.MiddleCenter;
+                return this;
+            }
+
+            //the person who made the goddamn anchor non-bitwise should go to hell
+            //0 1 2
+            //3 4 5
+            //6 7 8
+            public LayoutHelper<T> Left() {
+                component.childAlignment = (TextAnchor)((int)component.childAlignment / 3 * 3);
+                return this;
+            }
+
+            public LayoutHelper<T> Right() {
+                component.childAlignment = (TextAnchor)((int)component.childAlignment / 3 * 3 + 2);
+                return this;
+            }
+
+            public LayoutHelper<T> Top() {
+                component.childAlignment = (TextAnchor)((int)component.childAlignment % 3);
+                return this;
+            }
+
+            public LayoutHelper<T> Bottom() {
+                component.childAlignment = (TextAnchor)((int)component.childAlignment % 3 + 6);
+                return this;
             }
         }
     }
