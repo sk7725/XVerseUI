@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using static XVerse.UI.Layouts;
 
 namespace XVerse.UI {
-    [AddComponentMenu("XUI/XButton")] [RequireComponent(typeof(XImage))] //todo RequireComponent(typeof(Table))]
+    [AddComponentMenu("XUI/XButton")] [RequireComponent(typeof(XImage))]
     public class XButton : Button, IElement<XButton>, IStyle<ButtonStyle>{
         public RectTransform rect;
         public LayoutElement cell = null;
@@ -17,10 +17,8 @@ namespace XVerse.UI {
 
         private Action updater = null;
         private Action clicked = null;
-        public ButtonStyle style = null;//todo editorscript -> CustomEditor(typeof(XButton))
+        public ButtonStyle style = null;
 
-        //New(string text..., Action clicked)
-        //Size()
         public static XButton NewStyled(ButtonStyle style) {
             GameObject go = new GameObject("xButton");
             XButton e = go.AddComponent<XButton>();

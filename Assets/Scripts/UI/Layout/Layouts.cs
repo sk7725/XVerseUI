@@ -166,7 +166,6 @@ namespace XVerse.UI {
                 return Button<HorizontalLayoutGroup>(b => {
                     b.RawImage(image).Get().Size(imageSize).Center();
                     b.Add(text).Get().Grow().Center();
-                    //todo padding
                 }, clicked);
             }
 
