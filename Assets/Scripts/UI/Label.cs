@@ -7,10 +7,12 @@ using UnityEngine.UI;
 
 namespace XVerse.UI {
     [AddComponentMenu("XUI/Label")]
-    public class Label : TextMeshProUGUI, ILabel {
+    public class Label : TextMeshProUGUI, ILabel, IStyle<LabelStyle> {
         public RectTransform rect;
         public LayoutElement cell;
         private Action updater = null;
+
+        public LabelStyle style;
         [HideInInspector]
         public bool overrideFontMaterial = false;
 
@@ -80,6 +82,17 @@ namespace XVerse.UI {
             return this;
         }
 
+        public LabelStyle GetStyle() {
+            return style;
+        }
+
+        public void SetStyle(LabelStyle style) {
+            this.style = style;
+
+            style.Apply(this);
+        }
+
+        //IElement<T> methods
         protected override void Awake() {
             base.Awake();
             rect = GetComponent<RectTransform>();
@@ -87,6 +100,23 @@ namespace XVerse.UI {
 
         protected virtual void LateUpdate() {
             if (updater != null) updater();
+        }
+
+        //IStyle<T> methods
+        protected override void OnValidate() {
+            base.OnValidate();
+            if (style != null) {
+                style.Apply(this);
+            }
+        }
+
+        protected override void Reset() {
+            base.Reset();
+            LabelStyle s = Styles.Default<LabelStyle>();
+            if (s != null) {
+                style = s;
+                style.Apply(this);
+            }
         }
     }
 }

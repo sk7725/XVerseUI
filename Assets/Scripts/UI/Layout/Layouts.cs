@@ -150,7 +150,11 @@ namespace XVerse.UI {
                 return b;
             }
 
-            //todo Button(text, textStyle, clicked)
+            public XButton Button(string text, LabelStyle textStyle, Action clicked) {
+                XButton b = XButton.New(text, textStyle, clicked);
+                Add(b);
+                return b;
+            }
 
             public XButton Button(Texture2D image, float imageSize, Action clicked) {
                 XButton b = XButton.New(image, imageSize, clicked);
@@ -160,6 +164,15 @@ namespace XVerse.UI {
 
             public XButton Button(Texture2D image, Action clicked) {
                 return Button(image, image.width, clicked);
+            }
+
+            public XButton Button(string text, Texture2D image, LabelStyle textStyle, float imageSize, Action clicked) {
+                return Button<HorizontalLayoutGroup>(b => {
+                    b.RawImage(image).Get().Size(imageSize).Center();
+                    Label l = b.Add(text);
+                    l.SetStyle(textStyle);
+                    l.Get().Grow().Center();
+                }, clicked);
             }
 
             public XButton Button(string text, Texture2D image, float imageSize, Action clicked) {

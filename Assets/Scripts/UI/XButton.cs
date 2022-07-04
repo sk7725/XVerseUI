@@ -46,6 +46,15 @@ namespace XVerse.UI {
             return b;
         }
 
+        public static XButton New(string text, LabelStyle textStyle, Action clicked) {
+            XButton b = New(clicked);
+            Label label = Label.New(text);
+            label.rect.SetParent(b.rect, false);
+            label.SetStyle(textStyle);
+            label.Get().Center().Fill();
+            return b;
+        }
+
         public static XButton New(Texture2D icon, float iconSize, Action clicked) {
             XButton b = New(clicked);
             XRawImage image = XRawImage.New(icon);
