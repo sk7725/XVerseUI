@@ -117,8 +117,7 @@ namespace XVerse.UI {
             return new LayoutHelper<T>(c, background);
         }
 
-        //todo
-
+        //IElement<T> default methods
         protected override void Awake() {
             base.Awake();
             rect = GetComponent<RectTransform>();
@@ -130,9 +129,19 @@ namespace XVerse.UI {
             if (updater != null) updater();
         }
 
+        //IStyle<T> default methods
         protected override void OnValidate() {
             base.OnValidate();
             if (style != null) {
+                style.Apply(this);
+            }
+        }
+
+        protected override void Reset() {
+            base.Reset();
+            ButtonStyle s = Styles.Default<ButtonStyle>();
+            if (s != null) {
+                style = s;
                 style.Apply(this);
             }
         }

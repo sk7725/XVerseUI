@@ -11,6 +11,8 @@ namespace XVerse.UI {
         public RectTransform rect;
         public LayoutElement cell;
         private Action updater = null;
+        [HideInInspector]
+        public bool overrideFontMaterial = false;
 
         //todo override Align to also align text - wrapper implementation
         private static Label NewNamed(string name) {
@@ -35,6 +37,12 @@ namespace XVerse.UI {
             l.text = "";
             l.Updates(() => l.text = textp());
             return l;
+        }
+
+        public Label Material(Material mat) {
+            fontSharedMaterial = mat;
+            overrideFontMaterial = true;
+            return this;
         }
 
         public Label GetLabel() {

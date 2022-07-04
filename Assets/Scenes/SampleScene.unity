@@ -583,6 +583,7 @@ MonoBehaviour:
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
   rect: {fileID: 1022169366}
   cell: {fileID: 0}
+  overrideFontMaterial: 0
 --- !u!1 &1648464973
 GameObject:
   m_ObjectHideFlags: 0

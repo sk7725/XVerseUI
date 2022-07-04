@@ -18,18 +18,18 @@ public class ExampleUIBuilder1 : MonoBehaviour {
         var three = XButton.New("Three", () => Debug.Log("3"));
         three.Get().Right().FillY().SetScene(main);
 
-        Label.New("XTOWN").Get().Left().Down().SetScene(main);
+        Label.New("XTOWN").Color(Color.yellow).Get().Left().Down().SetScene(main);
 
         Label.New("UI").Get().Down().Right().SetScene(main);
 
-        string[] names = new string[] { "Taegyu", "Hanjun", "SeongH" };
+        string[] names = new string[] { "Taegu", "Hanjun", "OverflowwwwwwwwwwwTest" };
         string[] roles = new string[] { "Leader", "Dev", "Dev" };
         var ver = Layouts.Vertical(true);
         ver.Horizontal(t => {
             for (int i = 0; i < names.Length; i++) {
                 t.Add(names[i]).Get().Center().Width(170);
             }
-        }).Height(60f);
+        }).Height(60f).Color(Color.blue);
         ver.RawImage().Color(Color.cyan).Get().Height(8).GrowX();
         ver.Horizontal(t => {
             for (int i = 0; i < names.Length; i++) {

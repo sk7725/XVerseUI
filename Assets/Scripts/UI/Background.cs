@@ -29,9 +29,24 @@ namespace XVerse.UI {
             style.Apply(this);
         }
 
+        public override XImage Color(Color color) {
+            overrideColor = true;
+            return base.Color(color);
+        }
+
+        //IStyle<T> methods
         protected override void OnValidate() {
             base.OnValidate();
             if (style != null) {
+                style.Apply(this);
+            }
+        }
+
+        protected override void Reset() {
+            base.Reset();
+            BackgroundStyle s = Styles.Default<BackgroundStyle>();
+            if (s != null) {
+                style = s;
                 style.Apply(this);
             }
         }

@@ -35,7 +35,7 @@ namespace XVerse.UI {
             return im;
         }
 
-        public XImage Color(Color color) {
+        public virtual XImage Color(Color color) {
             this.color = color;
             return this;
         }
