@@ -4,10 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using XVerse.UI;
 
-public class ExampleUIBuilder1 : MonoBehaviour {
+public class ExampleUIBuilder1 : MonoBehaviour, ICompileUI {
     public Sprite backSprite;
-    void Start() {
-        Canvas main = FindObjectOfType<Canvas>();
+    public void Build(Canvas main) {
 
         var one = XButton.New("One", () => Debug.Log("1"));
         one.Get().Up().Left().SetScene(main);
