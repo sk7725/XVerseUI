@@ -120,6 +120,7 @@ namespace XVerse.UI {
                 c.childAlignment = TextAnchor.MiddleCenter;
             }
             if(c is HorizontalOrVerticalLayoutGroup hv) {
+                hv.childControlWidth = hv.childControlHeight = true;
                 hv.childForceExpandHeight = hv.childForceExpandWidth = false;
             }
 

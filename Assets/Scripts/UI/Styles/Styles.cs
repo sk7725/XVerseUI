@@ -17,7 +17,7 @@ namespace XVerse.UI {
             }
             T get = main.defaults.Get<T>();
             if (get == null) {
-                Debug.LogError("No default found for style " + typeof(T).Name);
+                Debug.Log("No default found for style " + typeof(T).Name);
             }
             return get;
         }

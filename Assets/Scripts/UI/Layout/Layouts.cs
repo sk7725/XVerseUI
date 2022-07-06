@@ -16,6 +16,7 @@ namespace XVerse.UI {
                 csf.horizontalFit = csf.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
             }
             if(go is HorizontalOrVerticalLayoutGroup hv) {
+                hv.childControlHeight = hv.childControlWidth = true;
                 hv.childForceExpandHeight = hv.childForceExpandWidth = false;
             }
             Background e = go.gameObject.AddComponent<Background>();

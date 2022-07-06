@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using XVerse.UI;
 
-public class ExampleUIBuilder1 : MonoBehaviour, ICompileUI {
+public class ExampleUIBuilder1 : MonoBehaviour {
     public Sprite backSprite;
     public void Build(Canvas main) {
+        //Sprite backSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Examples/Example1/Sprites/arrow-right.png");
 
         var one = XButton.New("One", () => Debug.Log("1"));
         one.Get().Up().Left().SetScene(main);
