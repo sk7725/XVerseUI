@@ -63,18 +63,25 @@ namespace XVerse.UI {
 
         void DrawWrappingOverflow() {
             LabelStyle bs = (LabelStyle)style.objectReferenceValue;
+            Rect rect;
+            float w;
 
             // WRAPPING
             bool prevw = m_EnableWordWrappingProp.boolValue;
-            EditorGUILayout.PropertyField(m_EnableWordWrappingProp);
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.PrefixLabel(k_WrappingLabel);
+            rect = EditorGUILayout.GetControlRect(true, EditorGUIUtility.singleLineHeight);
+            w = rect.width;
+            rect.width = w * 0.75f;
+            EditorGUI.PropertyField(rect, m_EnableWordWrappingProp, GUIContent.none);
             if (m_EnableWordWrappingProp.boolValue != prevw) {
                 overrideWrap.boolValue = true;
             }
-
-            EditorGUILayout.BeginHorizontal();
+            
             EditorGUI.BeginDisabledGroup(bs == null || !overrideWrap.boolValue);
-            EditorGUILayout.PrefixLabel(" ");
-            bool set = GUILayout.Button("Reset");
+            rect.x += rect.width;
+            rect.width = w * 0.25f;
+            bool set = GUI.Button(rect, "Reset");
             if (set) {
                 m_EnableWordWrappingProp.boolValue = bs.wrap;
                 overrideWrap.boolValue = false;
@@ -84,15 +91,20 @@ namespace XVerse.UI {
 
             // OVERFLOW
             int prevo = m_TextOverflowModeProp.enumValueIndex;
-            EditorGUILayout.PropertyField(m_TextOverflowModeProp);
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.PrefixLabel(k_OverflowLabel);
+            rect = EditorGUILayout.GetControlRect(true, EditorGUIUtility.singleLineHeight);
+            w = rect.width;
+            rect.width = w * 0.75f;
+            EditorGUI.PropertyField(rect, m_TextOverflowModeProp, GUIContent.none);
             if (m_TextOverflowModeProp.enumValueIndex != prevo) {
                 overrideOverflow.boolValue = true;
             }
-
-            EditorGUILayout.BeginHorizontal();
+            
             EditorGUI.BeginDisabledGroup(bs == null || !overrideOverflow.boolValue);
-            EditorGUILayout.PrefixLabel(" ");
-            bool set1 = GUILayout.Button("Reset");
+            rect.x += rect.width;
+            rect.width = w * 0.25f;
+            bool set1 = GUI.Button(rect, "Reset");
             if (set1) {
                 m_TextOverflowModeProp.enumValueIndex = (int)bs.overflow;
                 overrideOverflow.boolValue = false;
@@ -135,7 +147,8 @@ namespace XVerse.UI {
 
         static readonly GUIContent k_AlignmentLabel = new GUIContent("Alignment", "Horizontal and vertical alignment of the text within its container.");
         static readonly GUIContent k_WrapMixLabel = new GUIContent("Wrap Mix (W <-> C)", "How much to favor words versus characters when distributing the text.");
-
+        static readonly GUIContent k_WrappingLabel = new GUIContent("Wrapping", "Wraps text to the next line when reaching the edge of the container.");
+        static readonly GUIContent k_OverflowLabel = new GUIContent("Overflow", "How to display text which goes past the edge of the container.");
 
         void DrawFont() {
             bool isFontAssetDirty = false;
