@@ -15,15 +15,16 @@ namespace XVerse.UI {
         }
 
         public override void OnInspectorGUI() {
-
             serializedObject.Update();
             EditorGUILayout.PropertyField(defs);
             EditorGUILayout.PropertyField(sprites);
             EditorGUILayout.PropertyField(imageType);
 
             GUILayout.Space(10f);
+            bool save = GUILayout.Button("Apply Modifications");
+            if (save) EUtils.SaveStyle<XButton, ButtonStyle>((ButtonStyle)serializedObject.targetObject);
             bool set = GUILayout.Button("Set as Default");
-            if (set) EUtils.SetDefault<ButtonStyle>((ButtonStyle)serializedObject.targetObject);
+            if (set) EUtils.SetDefault((ButtonStyle)serializedObject.targetObject);
             serializedObject.ApplyModifiedProperties();
         }
     }

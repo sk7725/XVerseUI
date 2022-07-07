@@ -14,7 +14,7 @@ namespace XVerse.UI {
 
         public LabelStyle style;
         [HideInInspector]
-        public bool overrideFontMaterial = false;
+        public bool overrideOverflow = false, overrideWrap = false;
 
         //todo override Align to also align text - wrapper implementation
         private static Label NewNamed(string name) {
@@ -41,9 +41,14 @@ namespace XVerse.UI {
             return l;
         }
 
-        public Label Material(Material mat) {
-            fontSharedMaterial = mat;
-            overrideFontMaterial = true;
+        public Label Wrap(bool wrap) {
+            enableWordWrapping = wrap;
+            overrideWrap = true;
+            return this;
+        }
+        public Label Overflow(TextOverflowModes o) {
+            overflowMode = o;
+            overrideOverflow = true;
             return this;
         }
 
@@ -104,10 +109,10 @@ namespace XVerse.UI {
 
         //IStyle<T> methods
         protected override void OnValidate() {
-            base.OnValidate();
             if (style != null) {
                 style.Apply(this);
             }
+            base.OnValidate();
         }
 
         protected override void Reset() {

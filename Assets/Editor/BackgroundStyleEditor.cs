@@ -16,7 +16,6 @@ namespace XVerse.UI {
         }
 
         public override void OnInspectorGUI() {
-
             serializedObject.Update();
             EditorGUILayout.PropertyField(defs);
             EditorGUILayout.PropertyField(color);
@@ -24,6 +23,8 @@ namespace XVerse.UI {
             EditorGUILayout.PropertyField(imageType);
 
             GUILayout.Space(10f);
+            bool save = GUILayout.Button("Apply Modifications");
+            if (save) EUtils.SaveStyle<Background, BackgroundStyle>((BackgroundStyle)serializedObject.targetObject);
             bool set = GUILayout.Button("Set as Default");
             if (set) EUtils.SetDefault((BackgroundStyle)serializedObject.targetObject);
             serializedObject.ApplyModifiedProperties();

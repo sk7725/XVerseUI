@@ -14,9 +14,9 @@ namespace XVerse.UI {
 
         public void Apply(Label l) {
             l.font = font;
-            if (!l.overrideFontMaterial) l.fontSharedMaterial = material;
-            l.overflowMode = overflow;
-            l.enableWordWrapping = wrap;
+            l.fontSharedMaterial = material;
+            if(!l.overrideOverflow) l.overflowMode = overflow;
+            if(!l.overrideWrap) l.enableWordWrapping = wrap;
         }
     }
 }

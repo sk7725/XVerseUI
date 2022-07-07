@@ -28,7 +28,6 @@ namespace XVerse.UI {
             Color prevColor = color.colorValue;
             EditorGUILayout.PropertyField(color); //when changed, set overrideColor to true
             if (color.colorValue != prevColor) {
-                Debug.Log("Color changed!");
                 overrideColor.boolValue = true;
             }
 

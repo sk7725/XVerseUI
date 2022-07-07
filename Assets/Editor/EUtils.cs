@@ -13,8 +13,6 @@ public static class EUtils {
     }
 
     public static void SetDefault<T>(T obj) where T : ScriptableObject {
-        Debug.Log("TODO turn into an addressable");
-
         if (!AssetDatabase.IsValidFolder("Assets/Resources")) {
             AssetDatabase.CreateFolder("Assets", "Resources");
         }
@@ -63,5 +61,15 @@ public static class EUtils {
         }
 
         return guids;
+    }
+
+    public static void SaveStyle<T, S>(S style) where S : ScriptableObject where T : Component, IStyle<S> {
+        T[] elements = GameObject.FindObjectsOfType<T>();
+
+        foreach (T element in elements) {
+            if (element.GetStyle() == style) {
+                element.SetStyle(style);//calls Apply()
+            }
+        }
     }
 }

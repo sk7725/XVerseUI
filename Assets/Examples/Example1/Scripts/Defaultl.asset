@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaddaaa0a26e7fe4a8043b2f6588a1fd, type: 3}
-  m_Name: BlackTransparentBg
+  m_Script: {fileID: 11500000, guid: e4af9205ec17e8441aff04104e163732, type: 3}
+  m_Name: Defaultl
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0.2784314}
-  material: {fileID: 0}
-  imageType: 0
+  font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  material: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  overflow: 1
+  wrap: 0
