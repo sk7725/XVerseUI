@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace XVerse.UI {
-    [CreateAssetMenu(fileName = "NewLabelStyle", menuName = "XUI/Styles/LabelStyle", order = 100)]
+    [CreateAssetMenu(fileName = "NewLabelStyle", menuName = "XUI/Styles/LabelStyle", order = 101)]
     public class LabelStyle : ScriptableObject {
         public TMP_FontAsset font;
         public Material material;

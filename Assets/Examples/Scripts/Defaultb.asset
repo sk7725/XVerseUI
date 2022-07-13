@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a54ca14ee815ce44fae7955ec1db7c6b, type: 3}
   m_Name: Defaultb
   m_EditorClassIdentifier: 
-  defaultSprite: {fileID: 21300000, guid: fa865e85d9fd8374bb8ada1bfb78b6cb, type: 3}
+  defaultSprite: {fileID: 21300000, guid: 0270f2849d401024f8e8cf86e3863f05, type: 3}
   sprites:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: 7245f5d0d816e4541b00eac164965134, type: 3}

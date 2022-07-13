@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace XVerse.UI {
+    [AddComponentMenu("XUI/Empty Element", 20)]
     public class EmptyElement : MonoBehaviour, IElement<EmptyElement> {
         public RectTransform rect;
         public LayoutElement cell;

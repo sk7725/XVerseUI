@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace XVerse.UI {
-    [AddComponentMenu("XUI/XImage")]
+    [AddComponentMenu("XUI/XImage", 2)]
     public class XImage : Image, IElement<XImage> {
         public RectTransform rect;
         public LayoutElement cell;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace XVerse.UI {
-    [AddComponentMenu("XUI/Background")]
+    [AddComponentMenu("XUI/Background", 4)]
     public class Background : XImage, IStyle<BackgroundStyle> {
         public BackgroundStyle style;
         [HideInInspector]

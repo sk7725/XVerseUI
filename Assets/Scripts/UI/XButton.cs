@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using static XVerse.UI.Layouts;
 
 namespace XVerse.UI {
-    [AddComponentMenu("XUI/XButton")] [RequireComponent(typeof(XImage))]
+    [AddComponentMenu("XUI/XButton", 1)] [RequireComponent(typeof(XImage))]
     public class XButton : Button, IElement<XButton>, IStyle<ButtonStyle>{
         public RectTransform rect;
         public LayoutElement cell = null;

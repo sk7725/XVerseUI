@@ -6,62 +6,22 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace XVerse.UI {
-    [AddComponentMenu("XUI/Label", 5)]
-    public class Label : TextMeshProUGUI, ILabel, IStyle<LabelStyle> {
+    [AddComponentMenu("XUI/XInputField", 6)]
+    public class XInputField : TextMeshProUGUI, IElement<XInputField>, IStyle<InputFieldStyle> {
         public RectTransform rect;
         public LayoutElement cell;
         private Action updater = null;
 
-        public LabelStyle style;
+        public InputFieldStyle style;
         [HideInInspector]
-        public bool overrideOverflow = false, overrideWrap = false;
+        public bool overridePlaceholder = false;
 
-        //todo override Align to also align text - wrapper implementation
-        private static Label NewNamed(string name) {
-            GameObject go = new GameObject(name);
-            Label e = go.AddComponent<Label>();
-            e.rect = go.GetComponent<RectTransform>();
-            return e;
-        }
-
-        public static Label New() {
-            return NewNamed("label");
-        }
-
-        public static Label New(string text) {
-            Label l = NewNamed(text);
-            l.text = text;
-            return l;
-        }
-
-        public static Label New(Func<string> textp) {
-            Label l = NewNamed(textp());
-            l.text = "";
-            l.Updates(() => l.text = textp());
-            return l;
-        }
-
-        public Label Wrap(bool wrap) {
-            enableWordWrapping = wrap;
-            overrideWrap = true;
-            return this;
-        }
-        public Label Overflow(TextOverflowModes o) {
-            overflowMode = o;
-            overrideOverflow = true;
-            return this;
-        }
-
-        public Label GetLabel() {
-            return this;
-        }
-
-        public Label Color(Color color) {
+        public XInputField Color(Color color) {
             this.color = color;
             return this;
         }
 
-        public IElement<Label> Get() {
+        public IElement<XInputField> Get() {
             return this;
         }
 
@@ -82,16 +42,16 @@ namespace XVerse.UI {
             return cell;
         }
 
-        public Label Updates(Action u) {
+        public XInputField Updates(Action u) {
             updater = u;
             return this;
         }
 
-        public LabelStyle GetStyle() {
+        public InputFieldStyle GetStyle() {
             return style;
         }
 
-        public void SetStyle(LabelStyle style) {
+        public void SetStyle(InputFieldStyle style) {
             this.style = style;
 
             style.Apply(this);
@@ -117,7 +77,7 @@ namespace XVerse.UI {
 
         protected override void Reset() {
             base.Reset();
-            LabelStyle s = Styles.Default<LabelStyle>();
+            InputFieldStyle s = Styles.Default<InputFieldStyle>();
             if (s != null) {
                 style = s;
                 style.Apply(this);

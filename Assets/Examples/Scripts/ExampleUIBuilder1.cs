@@ -23,7 +23,7 @@ public class ExampleUIBuilder1 : MonoBehaviour {
 
         Label.New("UI").Get().Down().Right().SetScene(main);
 
-        string[] names = new string[] { "Taegu", "Hanjun", "OverflowwwwwwwwwwwTest" };
+        string[] names = new string[] { "Taegyu", "Hanjun", "OverflowwwwwwwwwwwTest" };
         string[] roles = new string[] { "Leader", "Dev", "Dev" };
         var ver = Layouts.Vertical(true);
         ver.Horizontal(t => {
