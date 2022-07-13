@@ -20,7 +20,7 @@ namespace XVerse.UI {
         public ButtonStyle style = null;
 
         public static XButton NewStyled(ButtonStyle style) {
-            GameObject go = new GameObject("xButton");
+            GameObject go = new GameObject("XButton");
             XButton e = go.AddComponent<XButton>();
             e.rect = go.GetComponent<RectTransform>();
             e.style = style == null ? Styles.Default<ButtonStyle>() : style;
@@ -41,6 +41,7 @@ namespace XVerse.UI {
         public static XButton New(string text, Action clicked) {
             XButton b = New(clicked);
             Label label = Label.New(text);
+            label.fontSize = 24; //todo set to buttonstyle
             label.rect.SetParent(b.rect, false);
             label.Get().Center().Fill();
             return b;
@@ -49,6 +50,7 @@ namespace XVerse.UI {
         public static XButton New(string text, LabelStyle textStyle, Action clicked) {
             XButton b = New(clicked);
             Label label = Label.New(text);
+            label.fontSize = 24; //todo set to buttonstyle
             label.rect.SetParent(b.rect, false);
             label.SetStyle(textStyle);
             label.Get().Center().Fill();

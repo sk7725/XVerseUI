@@ -19,7 +19,7 @@ namespace XVerse.UI {
         }
 
         public static XRawImage New() {
-            return NewNamed("xRawImage");
+            return NewNamed("XRawImage");
         }
 
         public static XRawImage New(string sprite) {
