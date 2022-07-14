@@ -9,7 +9,8 @@ namespace XVerse.UI {
         public TMP_FontAsset font;
 
         public void Apply(XInputField l) {
-            l.font = font;
+            if(l.textComponent != null) l.textComponent.font = font;
+            if(l.placeholder is TMP_Text t) t.font = font;
         }
     }
 }

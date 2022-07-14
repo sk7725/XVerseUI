@@ -10,7 +10,7 @@ namespace XVerse.UI {
         public bool overrideColor = false;
 
         public static new Background New() {
-            GameObject go = new GameObject("background");
+            GameObject go = new GameObject("Background");
             Background e = go.AddComponent<Background>();
             e.rect = go.GetComponent<RectTransform>();
             e.style = Styles.Default<BackgroundStyle>();

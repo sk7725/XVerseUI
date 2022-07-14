@@ -87,11 +87,13 @@ namespace XVerse.UI {
 
             public void Add(GameObject o) {
                 o.transform.SetParent(component.transform, false);
+                Utils.SetLayerRecursively(o, component.gameObject.layer);
             }
 
             public void Add(GameObject o, int index) {
                 o.transform.SetParent(component.transform, false);
                 o.transform.SetSiblingIndex(Math.Clamp(index, 0, component.transform.childCount - 1));
+                Utils.SetLayerRecursively(o, component.gameObject.layer);
             }
 
             public void ClearChildren() {

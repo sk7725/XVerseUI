@@ -26,9 +26,11 @@ public class CompileToScene {
                 }
                 else {
                     Transform parent = go.transform.parent; //preserve hierarchy
+                    int index = go.transform.GetSiblingIndex();
                     UnityEngine.Object.DestroyImmediate(go);
                     go = new GameObject("_" + m.name);
                     go.transform.SetParent(parent, false);
+                    go.transform.SetSiblingIndex(index);
                 }
 
                 //add canvas

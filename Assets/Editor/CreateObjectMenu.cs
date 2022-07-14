@@ -4,6 +4,7 @@ using TMPro.EditorUtilities;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace XVerse.UI {
     public static class CreateObjectMenu {
@@ -13,40 +14,60 @@ namespace XVerse.UI {
 
         [MenuItem("GameObject/XUI/XButton", false, 10)]
         public static void AddButton(MenuCommand menuCommand) {
-            XButton go = XButton.New("Button", () => { });
+            XButton go = XButton.New("Button", null);
             go.Get().Size(width, thickHeight);
-
-            // Override font size
-            Label textComponent = go.GetComponentInChildren<Label>();
 
             PlaceUIElementRoot(go.gameObject, menuCommand);
         }
 
-        [MenuItem("GameObject/XUI/XImage", false, 11)]
+        [MenuItem("GameObject/XUI/XButton with Icon", false, 11)]
+        public static void AddIButton(MenuCommand menuCommand) {
+            XButton go = XButton.NewStyled(null);
+            go.Get().Size(width, 80f);
+
+            //add icon and text
+            var b = go.AsLayout<HorizontalLayoutGroup>();
+            b.RawImage().Get().Size(16).Center();
+            Label l = b.Add("Button");
+            l.Get().Grow().Center();
+            l.fontSize = 24;
+
+            PlaceUIElementRoot(go.gameObject, menuCommand);
+        }
+
+        [MenuItem("GameObject/XUI/XImage", false, 13)]
         public static void AddImage(MenuCommand menuCommand) {
             XImage go = XImage.New();
             PlaceUIElementRoot(go.gameObject, menuCommand);
         }
 
-        [MenuItem("GameObject/XUI/XRawImage", false, 12)]
+        [MenuItem("GameObject/XUI/XRawImage", false, 14)]
         public static void AddRawImage(MenuCommand menuCommand) {
             XRawImage go = XRawImage.New();
             PlaceUIElementRoot(go.gameObject, menuCommand);
         }
 
-        [MenuItem("GameObject/XUI/Background", false, 13)]
+        [MenuItem("GameObject/XUI/Background", false, 15)]
         public static void AddBackground(MenuCommand menuCommand) {
             Background go = Background.New();
+            go.Get().Size(300, 300);
             PlaceUIElementRoot(go.gameObject, menuCommand);
         }
 
-        [MenuItem("GameObject/XUI/Label", false, 14)]
+        [MenuItem("GameObject/XUI/Label", false, 17)]
         public static void AddLabel(MenuCommand menuCommand) {
             Label go = Label.New("New Text");
             go.gameObject.name = "Label";
             go.Get().Size(200, 50);
             go.fontSize = 36;
 
+            PlaceUIElementRoot(go.gameObject, menuCommand);
+        }
+
+        [MenuItem("GameObject/XUI/XInputField", false, 18)]
+        public static void AddInputField(MenuCommand menuCommand) {
+            XInputField go = XInputField.New(null);
+            go.Get().Size(width, thickHeight);
             PlaceUIElementRoot(go.gameObject, menuCommand);
         }
 
