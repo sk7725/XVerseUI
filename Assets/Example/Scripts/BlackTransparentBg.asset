@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BlackTransparentBg
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0.2784314}
+  color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 0.2784314}
   material: {fileID: 0}
   imageType: 0
