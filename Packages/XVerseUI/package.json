@@ -1,0 +1,20 @@
+{
+  "name": "com.xreal.xui",
+  "version": "0.1.0",
+  "displayName": "XVerse UI",
+  "description": "An UI add-on which introduces preset styles and runtime-scriptable UI.",
+  "unity": "2021.3",
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.6"
+  },
+  "keywords": [
+    "xverse",
+    "ui",
+    "xtown"
+  ],
+  "author": {
+    "name": "Sunny Kim",
+    "email": "sunnykimunity@gmail.com",
+    "url": "https://github.com/sk7725"
+  }
+}
