@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaults:
     key:
-    - _classRef: XVerse.UI.ButtonStyle, Assembly-CSharp
-    - _classRef: XVerse.UI.BackgroundStyle, Assembly-CSharp
-    - _classRef: XVerse.UI.LabelStyle, Assembly-CSharp
+    - _classRef: XVerse.UI.ButtonStyle, xreal.xui.Runtime
+    - _classRef: XVerse.UI.LabelStyle, xreal.xui.Runtime
+    - _classRef: XVerse.UI.BackgroundStyle, xreal.xui.Runtime
     value:
     - {fileID: 11400000, guid: bd37aad8fba226049b29fc8f50e29e8a, type: 2}
-    - {fileID: 11400000, guid: decc873995bd05f4a885f315cd088f3e, type: 2}
     - {fileID: 11400000, guid: 6f4caccd889a1f14ab02ef019fe148a4, type: 2}
+    - {fileID: 11400000, guid: decc873995bd05f4a885f315cd088f3e, type: 2}
