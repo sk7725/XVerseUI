@@ -34,6 +34,7 @@ namespace XVerse.UI {
             return base.Color(color);
         }
 
+#if UNITY_EDITOR
         //IStyle<T> methods
         protected override void OnValidate() {
             base.OnValidate();
@@ -50,5 +51,6 @@ namespace XVerse.UI {
                 style.Apply(this);
             }
         }
+#endif
     }
 }

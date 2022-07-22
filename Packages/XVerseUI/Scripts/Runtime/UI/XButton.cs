@@ -141,6 +141,7 @@ namespace XVerse.UI {
             if (updater != null) updater();
         }
 
+#if UNITY_EDITOR
         //IStyle<T> default methods
         protected override void OnValidate() {
             base.OnValidate();
@@ -157,6 +158,7 @@ namespace XVerse.UI {
                 style.Apply(this);
             }
         }
+#endif
 
         public override void OnPointerEnter(PointerEventData eventData) {
             base.OnPointerEnter(eventData);

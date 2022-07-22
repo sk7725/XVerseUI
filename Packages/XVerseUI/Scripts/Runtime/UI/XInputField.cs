@@ -143,6 +143,7 @@ namespace XVerse.UI {
             if (updater != null) updater();
         }
 
+#if UNITY_EDITOR
         //IStyle<T> methods
         protected override void OnValidate() {
             if (style != null) {
@@ -159,5 +160,6 @@ namespace XVerse.UI {
                 style.Apply(this);
             }
         }
+#endif
     }
 }
