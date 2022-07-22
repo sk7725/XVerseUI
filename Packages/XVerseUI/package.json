@@ -1,6 +1,6 @@
 {
   "name": "com.xreal.xui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "displayName": "XVerse UI",
   "description": "An UI add-on which introduces preset styles and runtime-scriptable UI.",
   "unity": "2021.3",

@@ -42,7 +42,8 @@ public class CompileToScene {
                 method.Invoke(c, new object[] { canvas });
                 UnityEngine.Object.DestroyImmediate(canvas);
 
-                //Selection.activeGameObject = go;
+                //remove the compiler
+                GameObject.DestroyImmediate(c);
                 EditorSceneManager.SaveScene(EditorSceneManager.GetActiveScene());
             }
         }
