@@ -54,7 +54,7 @@ namespace XVerse.UI {
             text.extraPadding = true;
             text.richText = true;
             text.fontSize = 14;
-            text.color = Utils.defaultTextColor;
+            text.color = Utils.defaultTextColor;//todo default text color in style
 
             TextMeshProUGUI placeholder = childPlaceholder.AddComponent<TextMeshProUGUI>();
             placeholder.text = "Enter text...";
@@ -76,6 +76,9 @@ namespace XVerse.UI {
             e.textComponent = text;
             e.placeholder = placeholder;
             e.fontAsset = text.font;
+
+            e.style = Styles.Default<InputFieldStyle>();
+            if(e.style != null) e.style.Apply(e);
 
             return e;
         }

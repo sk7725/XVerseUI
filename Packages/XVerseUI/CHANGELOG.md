@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.3] - 2022-07-25
+### Additions
+- InputFieldStyle icon
+- Default fields for XButton and LabelS
+
 ## [0.1.2] - 2022-07-22
 ### Bugfixes
 - Fixed build failing
@@ -9,5 +14,5 @@
 - Fixed the compiler script lingering on the created object
 
 ## [0.1.0] - 2022-07-15
-### Changes
+### Additions
 - This is the first experimental release of XVerse UI

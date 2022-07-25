@@ -189,8 +189,6 @@ namespace XVerse.UI {
                 return Button(text, image, image.width, clicked);
             }
 
-            //todo Button(text, image, textStyle, imageSize, clicked)
-
             public IElement<XImage> SubLayout<F>(Action<LayoutHelper<F>> cons) where F: LayoutGroup {
                 LayoutHelper<F> t = NewLayout<F>(false);
                 cons(t);

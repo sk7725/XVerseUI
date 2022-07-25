@@ -10,6 +10,7 @@ namespace XVerse.UI {
         public Sprite defaultSprite;
         public SpriteState sprites;
         public Image.Type imageType = Image.Type.Sliced;
+        public LabelStyle defaultLabelStyle;
 
         public void Apply(XButton b) {
             b.background.sprite = defaultSprite;

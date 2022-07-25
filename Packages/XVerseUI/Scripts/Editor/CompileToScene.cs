@@ -51,7 +51,6 @@ public class CompileToScene {
 
     [MenuItem("Assets/Compile XUI to Scene", true)]
     private static bool CompileCheck() {
-        //todo if public static Build(Canvas main) method exists (use reflection)
         if (Selection.activeObject is MonoScript m) {
             return GetBuildMethod(m) != null;
         }

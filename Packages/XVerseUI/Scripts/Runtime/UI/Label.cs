@@ -16,16 +16,20 @@ namespace XVerse.UI {
         [HideInInspector]
         public bool overrideOverflow = false, overrideWrap = false;
 
-        //todo override Align to also align text - wrapper implementation
         private static Label NewNamed(string name) {
             GameObject go = new GameObject(name);
             Label e = go.AddComponent<Label>();
             e.rect = go.GetComponent<RectTransform>();
+            e.style = Styles.Default<LabelStyle>();
+            if (e.style != null) {
+                e.style.Apply(e);
+                e.style.ApplyDefaults(e);
+            }
             return e;
         }
 
         public static Label New() {
-            return NewNamed("label");
+            return NewNamed("Label");
         }
 
         public static Label New(string text) {

@@ -11,12 +11,19 @@ namespace XVerse.UI {
         public Material material;
         public TextOverflowModes overflow = TextOverflowModes.Overflow;
         public bool wrap = true;
+        public Color defaultTextColor = new Color(50f / 255f, 50f / 255f, 50f / 255f, 1f);
+        public float defaultTextFont = 36;
 
         public void Apply(Label l) {
             l.font = font;
             l.fontSharedMaterial = material;
             if(!l.overrideOverflow) l.overflowMode = overflow;
             if(!l.overrideWrap) l.enableWordWrapping = wrap;
+        }
+
+        public void ApplyDefaults(Label l) {
+            l.fontSize = defaultTextFont;
+            l.color = defaultTextColor;
         }
     }
 }

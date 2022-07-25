@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4af9205ec17e8441aff04104e163732, type: 3}
-  m_Name: Defaultl
+  m_Name: TextButtonl
   m_EditorClassIdentifier: 
   font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  material: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  overflow: 1
+  material: {fileID: 0}
+  overflow: 0
   wrap: 0
-  defaultTextColor: {r: 1, g: 1, b: 1, a: 1}
+  defaultTextColor: {r: 1, g: 0.85950303, b: 0.5509434, a: 1}
   defaultTextFont: 24

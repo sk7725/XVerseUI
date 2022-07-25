@@ -19,3 +19,4 @@ MonoBehaviour:
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   imageType: 1
+  defaultLabelStyle: {fileID: 0}

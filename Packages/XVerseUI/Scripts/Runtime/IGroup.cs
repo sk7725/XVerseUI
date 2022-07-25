@@ -4,6 +4,6 @@ using UnityEngine;
 
 namespace XVerse.UI {
     public interface IGroup {
-        //todo
+        //todo remove? merge to element?
     }
 }
