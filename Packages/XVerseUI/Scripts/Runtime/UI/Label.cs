@@ -16,11 +16,11 @@ namespace XVerse.UI {
         [HideInInspector]
         public bool overrideOverflow = false, overrideWrap = false;
 
-        private static Label NewNamed(string name) {
+        public static Label _NewBase(string name, bool defaultStyle) {
             GameObject go = new GameObject(name);
             Label e = go.AddComponent<Label>();
             e.rect = go.GetComponent<RectTransform>();
-            e.style = Styles.Default<LabelStyle>();
+            if(defaultStyle) e.style = Styles.Default<LabelStyle>();
             if (e.style != null) {
                 e.style.Apply(e);
                 e.style.ApplyDefaults(e);
@@ -29,17 +29,17 @@ namespace XVerse.UI {
         }
 
         public static Label New() {
-            return NewNamed("Label");
+            return _NewBase("Label", true);
         }
 
         public static Label New(string text) {
-            Label l = NewNamed(text);
+            Label l = _NewBase(text, true);
             l.text = text;
             return l;
         }
 
         public static Label New(Func<string> textp) {
-            Label l = NewNamed(textp());
+            Label l = _NewBase(textp(), true);
             l.text = "";
             l.Updates(() => l.text = textp());
             return l;

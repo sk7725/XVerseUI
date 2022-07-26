@@ -22,7 +22,7 @@ namespace XVerse.UI {
 
         [MenuItem("GameObject/XUI/XButton with Icon", false, 11)]
         public static void AddIButton(MenuCommand menuCommand) {
-            XButton go = XButton.NewStyled(null);
+            XButton go = XButton._NewBase("Icon XButton", true);
             go.Get().Size(width, 80f);
 
             //add icon and text
@@ -30,7 +30,13 @@ namespace XVerse.UI {
             b.RawImage().Get().Size(16).Center();
             Label l = b.Add("Button");
             l.Get().Grow().Center();
-            l.fontSize = 24;
+            if (go.style != null) {
+                l.fontSize = go.style.defaultTextFont;
+                l.color = go.style.defaultTextColor;
+            }
+            else {
+                l.fontSize = 24;
+            }
 
             PlaceUIElementRoot(go.gameObject, menuCommand);
         }

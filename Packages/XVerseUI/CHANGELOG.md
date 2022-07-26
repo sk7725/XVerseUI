@@ -1,9 +1,15 @@
 # Changelog
 
+## [0.1.4] - 2022-07-26
+### Changes
+- Renamed base constructor for IElements to _NewBase()
+### BugFixes
+- Fixed XButtons with icon not being affected by the default fields of its style
+
 ## [0.1.3] - 2022-07-25
 ### Additions
 - InputFieldStyle icon
-- Default fields for XButton and LabelS
+- Default fields for XButton and Label
 
 ## [0.1.2] - 2022-07-22
 ### Bugfixes

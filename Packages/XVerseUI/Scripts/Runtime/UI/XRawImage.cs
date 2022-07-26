@@ -11,7 +11,7 @@ namespace XVerse.UI {
         public LayoutElement cell;
         private Action updater = null;
 
-        private static XRawImage NewNamed(string name) {
+        public static XRawImage _NewBase(string name) {
             GameObject go = new GameObject(name);
             XRawImage e = go.AddComponent<XRawImage>();
             e.rect = go.GetComponent<RectTransform>();
@@ -19,17 +19,17 @@ namespace XVerse.UI {
         }
 
         public static XRawImage New() {
-            return NewNamed("XRawImage");
+            return _NewBase("XRawImage");
         }
 
         public static XRawImage New(string sprite) {
-            XRawImage im = NewNamed(sprite);
+            XRawImage im = _NewBase(sprite);
             im.texture = Resources.Load<Texture2D>("Sprites/" + sprite);
             return im;
         }
 
         public static XRawImage New(Texture2D sprite) {
-            XRawImage im = NewNamed(sprite.name);
+            XRawImage im = _NewBase(sprite.name);
             im.texture = sprite;
             return im;
         }

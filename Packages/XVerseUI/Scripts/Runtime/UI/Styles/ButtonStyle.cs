@@ -10,7 +10,8 @@ namespace XVerse.UI {
         public Sprite defaultSprite;
         public SpriteState sprites;
         public Image.Type imageType = Image.Type.Sliced;
-        public LabelStyle defaultLabelStyle;
+        public Color defaultTextColor = new Color(50f / 255f, 50f / 255f, 50f / 255f, 1f);
+        public float defaultTextFont = 24;
 
         public void Apply(XButton b) {
             b.background.sprite = defaultSprite;

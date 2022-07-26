@@ -17,7 +17,7 @@ namespace XVerse.UI {
         [HideInInspector]
         public bool overridePlaceholder = false;
 
-        private static XInputField NewNamed(string name) {
+        public static XInputField _NewBase(string name) {
             GameObject root = new GameObject(name);
             XInputField e = root.AddComponent<XInputField>();
             e.rect = root.GetComponent<RectTransform>();
@@ -84,7 +84,7 @@ namespace XVerse.UI {
         }
 
         public static XInputField New(Action<string> listener) {
-            XInputField e = NewNamed("XInputField");
+            XInputField e = _NewBase("XInputField");
             e.listener = listener;
             return e;
         }

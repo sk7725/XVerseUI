@@ -136,7 +136,8 @@ namespace XVerse.UI {
             }
 
             public XButton Button<F>(Action<LayoutHelper<F>> cons, ButtonStyle style, Action clicked) where F: LayoutGroup {
-                XButton b = XButton.NewStyled(style);
+                XButton b = XButton._NewBase("Boxed XButton", false);
+                b.SetStyle(style == null ? Styles.Default<ButtonStyle>() : style);
                 b.Clicked(clicked);
                 cons(b.AsLayout<F>());
                 Add(b);
@@ -181,7 +182,12 @@ namespace XVerse.UI {
             public XButton Button(string text, Texture2D image, float imageSize, Action clicked) {
                 return Button<HorizontalLayoutGroup>(b => {
                     b.RawImage(image).Get().Size(imageSize).Center();
-                    b.Add(text).Get().Grow().Center();
+                    Label l = b.Add(text);
+                    if(Styles.Default<ButtonStyle>() is ButtonStyle style) {
+                        l.fontSize = style.defaultTextFont;
+                        l.color = style.defaultTextColor;
+                    }
+                    l.Get().Grow().Center();
                 }, clicked);
             }
 

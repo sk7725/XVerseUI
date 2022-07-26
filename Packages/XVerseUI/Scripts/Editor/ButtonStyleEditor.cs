@@ -7,14 +7,16 @@ namespace XVerse.UI {
     [CustomEditor(typeof(ButtonStyle))]
     public class ButtonStyleEditor : Editor {
         bool showDefaults = true;
-        SerializedProperty defs, sprites, imageType, defaultLabelStyle;
+        SerializedProperty defs, sprites, imageType, defaultSize, defaultColor;
         static readonly GUIContent k_DefaultsLabel = new GUIContent("Defaults", "Default settings are only applied when an instance of a component is first created.");
 
         private void OnEnable() {
             defs = serializedObject.FindProperty("defaultSprite");
             sprites = serializedObject.FindProperty("sprites");
             imageType = serializedObject.FindProperty("imageType");
-            defaultLabelStyle = serializedObject.FindProperty("defaultLabelStyle");
+            //defaultLabelStyle = serializedObject.FindProperty("defaultLabelStyle");
+            defaultSize = serializedObject.FindProperty("defaultTextFont");
+            defaultColor = serializedObject.FindProperty("defaultTextColor");
         }
 
         public override void OnInspectorGUI() {
@@ -26,6 +28,7 @@ namespace XVerse.UI {
             GUILayout.Space(10f);
             showDefaults = EditorGUILayout.BeginFoldoutHeaderGroup(showDefaults, k_DefaultsLabel);
             if (showDefaults) {
+                /*
                 EditorGUILayout.PropertyField(defaultLabelStyle);
                 if (defaultLabelStyle.objectReferenceValue != null) {
                     EditorGUI.BeginDisabledGroup(true);
@@ -42,7 +45,9 @@ namespace XVerse.UI {
                     EditorGUILayout.EndHorizontal();
 
                     EditorGUI.EndDisabledGroup();
-                }
+                }*/
+                EditorGUILayout.PropertyField(defaultSize);
+                EditorGUILayout.PropertyField(defaultColor);
             }
             EditorGUILayout.EndFoldoutHeaderGroup();
 

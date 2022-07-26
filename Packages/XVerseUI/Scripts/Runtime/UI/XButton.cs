@@ -19,11 +19,11 @@ namespace XVerse.UI {
         private Action clicked = null;
         public ButtonStyle style = null;
 
-        public static XButton NewStyled(ButtonStyle style) {
-            GameObject go = new GameObject("XButton");
+        public static XButton _NewBase(string name, bool defaultStyle) {
+            GameObject go = new GameObject(name);
             XButton e = go.AddComponent<XButton>();
             e.rect = go.GetComponent<RectTransform>();
-            e.style = style == null ? Styles.Default<ButtonStyle>() : style;
+            if(defaultStyle) e.style = Styles.Default<ButtonStyle>();
             if (e.style != null) {
                 e.style.Apply(e);
             }
@@ -31,7 +31,7 @@ namespace XVerse.UI {
         }
 
         public static XButton New() {
-            return NewStyled(null);
+            return _NewBase("XButton", true);
         }
 
         public static XButton New(Action clicked) {
@@ -42,26 +42,24 @@ namespace XVerse.UI {
 
         public static XButton New(string text, Action clicked) {
             XButton b = New(clicked);
-            Label label = Label.New(text);
+            Label label = Label._NewBase("Label", true);
+            label.text = text;
             label.rect.SetParent(b.rect, false);
             label.Get().Center().Fill();
-            if (b.style.defaultLabelStyle != null) {
-                label.style = b.style.defaultLabelStyle;
-                b.style.defaultLabelStyle.ApplyDefaults(label);
+            if (b.style != null) {
+                label.color = b.style.defaultTextColor;
+                label.fontSize = b.style.defaultTextFont;
             }
             return b;
         }
 
         public static XButton New(string text, LabelStyle textStyle, Action clicked) {
             XButton b = New(clicked);
-            Label label = Label.New(text);
+            Label label = Label._NewBase("Label", true);
+            label.text = text;
             label.rect.SetParent(b.rect, false);
             label.SetStyle(textStyle);
             label.Get().Center().Fill();
-            if (b.style.defaultLabelStyle != null) {
-                label.style = b.style.defaultLabelStyle;
-                b.style.defaultLabelStyle.ApplyDefaults(label);
-            }
             return b;
         }
 
